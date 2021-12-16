@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Stuff(str, start, length, replacewith) {
+           return str.substr(0, start)+replacewith+str.slice(start+length);
+        }
+        function ToLatin(str) {
+            str = " " + str;
+            pattern = '[^ОоАаИиУуЎўЕеЁё]ц';
+            let n = str.search(pattern);
+            while (n > -1) {
+                str = Stuff(str, n + 1, 1, 's');
+                n = str.search(pattern);
+            }
+            pattern = '[^ОоАаИиУуЎўЕеЁё]Ц';
+            n = str.search(pattern);
+            while (n > -1) {
+                str = Stuff(str, n + 1, 1, 'S');
+                n = str.search(pattern);
+            }
+
+            pattern = '[^а-яА-ЯЎўҒғҚқҲҳЁёa-zA-Z]Е';
+            n = str.search(pattern);
+            while (n > -1) {
+                str = Stuff(str, n + 1, 1, 'Ye');
+                n = str.search(pattern);
+            }
+            pattern = '[^а-яА-ЯЎўҒғҚқҲҳЁёa-zA-Z]е';
+            n = str.search(pattern);
+            while (n > -1) {
+                str = Stuff(str, n + 1, 1, 'ye');
+                n = str.search(pattern);
+            }
+
+            pattern = '[ОоАаИиУуЎўЭэЕеЁё]е';
+            n = str.search(pattern);
+            while (n > -1) {
+                str = Stuff(str, n + 1, 1, 'ye');
+                n = str.search(pattern);
+            }
+            pattern = '[ОоАаИиУуЎўЭэЕеЁё]Е';
+            n = str.search(pattern);
+            while (n > -1) {
+                str = Stuff(str, n + 1, 1, 'Ye');
+                n = str.search(pattern);
+            }
+            str = str.replace(/а/g, 'a');
+            str = str.replace(/А/g, 'A');
+            str = str.replace(/б/g, 'b');
+            str = str.replace(/Б/g, 'B');
+            str = str.replace(/в/g, 'v');
+            str = str.replace(/В/g, 'V');
+            str = str.replace(/г/g, 'g');
+            str = str.replace(/Г/g, 'G');
+            str = str.replace(/д/g, 'd');
+            str = str.replace(/Д/g, 'D');
+            str = str.replace(/е/g, 'e');
+            str = str.replace(/Е/g, 'E');
+            str = str.replace(/ё/g, 'yo');
+            str = str.replace(/Ё/g, 'Yo');
+            str = str.replace(/ж/g, 'j');
+            str = str.replace(/Ж/g, 'J');
+            str = str.replace(/з/g, 'z'); 
+            str = str.replace(/З/g, 'Z');
+            str = str.replace(/и/g, 'i'); 
+            str = str.replace(/И/g, 'I');
+            str = str.replace(/й/g, 'y'); 
+            str = str.replace(/Й/g, 'Y');
+            str = str.replace(/к/g, 'k'); 
+            str = str.replace(/К/g, 'K');
+            str = str.replace(/л/g, 'l'); 
+            str = str.replace(/Л/g, 'L');
+            str = str.replace(/м/g, 'm'); 
+            str = str.replace(/М/g, 'M');
+            str = str.replace(/н/g, 'n'); 
+            str = str.replace(/Н/g, 'N');
+            str = str.replace(/о/g, 'o'); 
+            str = str.replace(/О/g, 'O');
+            str = str.replace(/п/g, 'p'); 
+            str = str.replace(/П/g, 'P');
+            str = str.replace(/р/g, 'r'); 
+            str = str.replace(/Р/g, 'R');
+            str = str.replace(/с/g, 's'); 
+            str = str.replace(/С/g, 'S');
+            str = str.replace(/т/g, 't'); 
+            str = str.replace(/Т/g, 'T');
+            str = str.replace(/у/g, 'u'); 
+            str = str.replace(/У/g, 'U');
+            str = str.replace(/ф/g, 'f'); 
+            str = str.replace(/Ф/g, 'F');
+            str = str.replace(/х/g, 'x'); 
+            str = str.replace(/Х/g, 'X');
+            str = str.replace(/ц/g, 'ts'); 
+            str = str.replace(/Ц/g, 'Ts');
+            str = str.replace(/ч/g, 'ch'); 
+            str = str.replace(/Ч/g, 'Ch');
+            str = str.replace(/ш/g, 'sh'); 
+            str = str.replace(/Ш/g, 'Sh');
+            str = str.replace(/ъ/g, '’'); 
+            str = str.replace(/ь/g, '');
+            str = str.replace(/э/g, 'e'); 
+            str = str.replace(/Э/g, 'E');
+            str = str.replace(/ю/g, 'yu'); 
+            str = str.replace(/Ю/g, 'Yu');
+            str = str.replace(/я/g, 'ya'); 
+            str = str.replace(/Я/g, 'Ya');
+            str = str.replace(/ў/g, 'о‘'); 
+            str = str.replace(/Ў/g, 'О‘');
+            str = str.replace(/қ/g, 'q');
+            str = str.replace(/Қ/g, 'Q');
+            str = str.replace(/ғ/g, 'g‘');
+            str = str.replace(/Ғ/g, 'G‘');
+            str = str.replace(/ҳ/g, 'h');
+            str = str.replace(/Ҳ/g, 'H');
+            str = str.replace(/ы/g, 'i');
+            str = str.replace(/Ы/g, 'I');
+            str = str.replace(/‘’/g, '‘');
+            return str.substr(1);
+        }
+        console.log(ToLatin("абдуллаев абдуллаев назиров қўзиев қўзиев қўзиев қўзиев"));
+        console.log(ToLatin("цирк"));
+        console.log(ToLatin("ер"));
+        console.log(ToLatin("лицей"));
+    </script>
+</body>
+
+</html>
