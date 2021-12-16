@@ -44,6 +44,7 @@ from Crypto.Cipher import PKCS1_OAEP
 
 def rsa_encrypt_decrypt():
     key = RSA.generate(2048)
+    print(key.export_key())
     private_key = key.export_key('PEM')
     public_key = key.publickey().exportKey('PEM')
     print(type(public_key))

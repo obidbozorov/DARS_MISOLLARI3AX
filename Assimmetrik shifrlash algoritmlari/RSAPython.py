@@ -1,0 +1,25 @@
+from Crypto.PublicKey import RSA
+from Crypto import Random
+from Crypto.Cipher import PKCS1_OAEP
+def rsa_encrypt_decrypt():
+    key = RSA.generate(2048)
+    key2=RSA.generate(2048)
+    pkey=key2.export_key('PEM')
+    #print(key.export_key())
+    private_key = key.export_key('PEM')
+    public_key = key.publickey().exportKey('PEM')
+    #print(public_key)
+    message = input('Ochiq matnni kiriting:')
+    message = str.encode(message)
+    rsa_public_key = RSA.importKey(public_key)
+    rsa_public_key = PKCS1_OAEP.new(rsa_public_key)
+    encrypted_text = rsa_public_key.encrypt(message)
+    print('Shifrma`lumot: {}'.format(encrypted_text))
+    rsa_public_key2 = RSA.importKey(pkey)
+    rsa_public_key2 = PKCS1_OAEP.new(rsa_public_key2)
+    dec=rsa_public_key2.decrypt(encrypted_text)
+    rsa_private_key = RSA.importKey(private_key)
+    rsa_private_key = PKCS1_OAEP.new(rsa_private_key)
+    decrypted_text = rsa_private_key.decrypt(encrypted_text)
+    print('Deshifrlangan ma`lumot : {}'.format(decrypted_text))
+rsa_encrypt_decrypt()
